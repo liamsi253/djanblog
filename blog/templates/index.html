@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+        <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+            <div class="img-box">
+                <img src="media/images/about-img.png" alt="" width="600">
+            </div>
+            </div>
+            <div class="col-md-6 mt-5">
+            <div class="detail-box">
+                <div class="heading_container">
+                <h2>
+                    Bienvenue sur DjanBlog
+                </h2>
+                </div>
+                <p>
+                    DjanBlog est une plateforme developpé par ismail Hassan, développeur python/django et qui vous permet de publier vos en créant un compte bien-sur
+                </p>
+                <button type="button" class="btn btn-success btn-lg">Publier votre blog</button>
+            </div>
+            </div>
+        </div>
+        </div>
+    </section>
+  <!-- furniture section -->
+  <section class="furniture_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2 class="mt-4 mb-4">
+          Nos blog
+        </h2>
+        <p class="mt-2 mb-3">
+          which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't an
+        </p>
+      </div>
+      <div class="row">
+        {% for blog in object_list %}
+        <div class="col-md-6 col-lg-4 mt-4 mb-5">
+          <div class="box">
+            <a href="{% url 'show' blog.pk %}">
+              <div class="img-box">
+                {% if blog.cover %}
+                <img src="{{ blog.cover.url }}" alt="" width="300">
+                {% endif %}
+              </div>
+            </a>
+            <div class="detail-box">
+              <h5 class="mt-3">
+                <a href="{% url 'show' blog.pk %}">{{blog.title}}</a>
+              </h5>
+              <div class="price_box">
+                <h6 class="price_heading">
+                  Par <i class="text-secondary">{{ blog.author }}</i> 
+                </h6>
+                <a href="">
+                  Buy Now
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <!-- end furniture section -->
+{% endblock %}
