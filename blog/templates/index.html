@@ -55,8 +55,12 @@
                 <h6 class="price_heading">
                   Par <i class="text-secondary">{{ blog.author }}</i> 
                 </h6>
-                <a href="">
-                  Buy Now
+                <a href="{% url 'edit' blog.pk %}">
+                  Edit
+                </a>
+                <br>
+                <a href="{% url 'delete' blog.pk %}">
+                  Delete
                 </a>
               </div>
             </div>
